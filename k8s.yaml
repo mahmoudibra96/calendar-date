@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calender_app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: calender_app
+  template:
+    metadata:
+      labels:
+        app: calender_app
+    spec:
+      containers:
+      - name: calender_app
+        image: mahmoudibrahem125/calender_app:latest
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calender_app
+spec:
+  selector:
+    app: calender_app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 31112
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}
+
+
