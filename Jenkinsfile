@@ -11,16 +11,14 @@ pipeline {
          steps {
             sh(script: 'docker images -a')
             sh(script: """
-               cd k8s-web-hello/
                docker build -t calnder_app .
-               cd ..
             """)
          }
       }
             stage('Pushing image to docker hub')  {
           steps {
               echo "Workspace is $WORKSPACE"
-              dir("$WORKSPACE/k8s-web-hello") {
+              dir("$WORKSPACE") {
               script {
                   docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                       def image = docker.build('mahmoudibrahem125/calender_app:latest')
