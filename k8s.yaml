@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: calenderapp
-        image: mahmoudibrahem125/calender_app:latest
+        image: mahmoudibrahem125/calenderapp:latest
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -26,8 +26,8 @@ spec:
     app: calenderapp
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: 8000
+    targetPort: 8000
     nodePort: 31112
   type: NodePort
   sessionAffinity: None
