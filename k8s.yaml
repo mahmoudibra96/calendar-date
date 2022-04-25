@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: calenderapp
-        image: mahmoudibrahem125/calenderapp:latest
+        image: mahmoudibrahem125/calender_app:latest
       restartPolicy: Always
 ---
 apiVersion: v1
